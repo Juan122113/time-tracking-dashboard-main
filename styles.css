@@ -27,14 +27,33 @@ body {
     min-height: 100vh;
     font-size: 18px;
     background-color: var(--Very-dark-blue);
+    font-family: Rubik, sans-serif;
+    /* margin: 0 auto; */
 }
+
+/* main {
+} */
 
 header {
     background-color: var(--Dark-blue);
+    width: 90%;
+    margin: 4.5em auto 1em auto;
+    border-radius: 10px;
 }
 
 .user {
     background-color: var(--Blue);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portrait {
+    border-radius: 50%;
+    width: 4em;
+    height: 4em;
+    border: solid 2px;
 }
 
 .attribution { font-size: 11px; text-align: center; }
