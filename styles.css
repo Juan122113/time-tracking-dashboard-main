@@ -36,7 +36,7 @@ body {
 
 header {
     background-color: var(--Dark-blue);
-    width: 90%;
+    width: 87%;
     margin: 4.5em auto 1em auto;
     border-radius: 10px;
 }
@@ -47,6 +47,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1.7em;
+    position: relative;
 }
 
 .portrait {
@@ -54,6 +56,46 @@ header {
     width: 4em;
     height: 4em;
     border: solid 2px;
+    /* margin-right: 1.2em; */
+    position: relative;
+    right: 4%;
+}
+
+.user-text {
+    /* padding-right: 0.1em; */
+    /* margin-left: -1em; */
+}
+
+.user-subt {
+    font-weight: 300;
+    font-size: 0.8em;
+    opacity: 0.5;
+}
+
+.user-title {
+    font-weight: 200;
+    font-size: 1.3em;
+}
+
+.timeframes {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1.3em 0;
+}
+
+.container {
+    margin: auto;
+    width: 87%;
+    padding-top: 2em;
+}
+
+.work {
+    background-color: var(--Light-red-work);
+}
+
+section {
+    background-color: var(--Dark-blue);
 }
 
 .attribution { font-size: 11px; text-align: center; }
