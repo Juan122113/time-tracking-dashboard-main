@@ -229,7 +229,8 @@ h5 {
 
     main {
         display: grid;
-        grid-template-columns: 16em 17em 17em 17em;
+        grid-template-columns: 14.5em 16em 16em 16em;
+        grid-template-rows: repeat(2, 14.5em);
         /* align-items: center; */
         /* justify-content: center; */
         place-content: center;
@@ -241,18 +242,15 @@ h5 {
     }
 
     header {
-        width: auto;
-        margin: 4.5em auto 1em auto;
+        width: 100%;
+        margin: 0;
         grid-area: header;
+        height: 100%;
     }
 
     .user {
-        background-color: var(--Blue);
         border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 1.7em;
-        position: relative;
+        display: block;
+        padding: 6em 1.7em 6em 1.7em;
     }
 }
