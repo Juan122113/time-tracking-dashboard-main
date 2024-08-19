@@ -209,12 +209,13 @@ h5 {
     display: none;
 }
 
-.ellipsis {
+svg {
     position: relative;
     bottom: 1em;
     left: 90%;
     /* height: 0.5em; */
     /* width: 0.5em; */
+    color: var(--Pale-Blue);
 }
 
 .attribution { 
@@ -228,7 +229,7 @@ h5 {
 
 .attribution a { color: hsl(228, 45%, 44%); }
 
-@media (min-width: 700px) {
+@media (min-width: 850px) {
 
     main {
         display: grid;
@@ -337,14 +338,12 @@ h5 {
         top: 2.8em;
     }
 
-    .ellipsis {
+    svg {
         bottom: 3.3em;
         left: 80%;
-        /* height: 0.5em; */
-        /* width: 0.5em; */
     }
 
-    .ellipsis:hover {
-        fill: "white";
+    svg:hover {
+        color: white;
     }
 }
