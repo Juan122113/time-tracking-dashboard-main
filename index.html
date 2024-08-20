@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script defer src="./main.js"></script>
   
   <title>Frontend Mentor | Time tracking dashboard</title>
 
@@ -27,19 +28,19 @@
       <div class="timeframes">
         <p id="daily" class="tf">Daily</p>
         <p id="weekly" class="tf">Weekly</p>
-        <p id="monthly" class="tf">Monthly</p>
+        <p id="" class="tf">Monthly</p>
       </div>
     </header>
 
     <div class="work container">
       <section>
-        <div class="current">
+        <div class="current" id="current-work">
           <h5>Work</h5>
           <h1 class="daily time">5hrs</h1>
           <h1 class="weekly time">32hrs</h1>
           <h1 class="monthly time">103hrs</h1>
         </div>
-        <div class="past">
+        <div class="past" id="past-work">
           <svg width="21" height="5" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z" fill="currentColor" fill-rule="evenodd"/></svg>
           <p class="day prev">Yesterday - 7hrs</p>
           <p class="week prev">Last Week - 36hrs </p>
@@ -49,13 +50,13 @@
     </div>
     <div class="play container">
       <section>
-        <div class="current">
+        <div class="current" id="current-play">
           <h5>Play</h5>
           <h1 class="daily time">1hr</h1>
           <h1 class="weekly time">10hrs</h1>
           <h1 class="monthly time">23hrs</h1>
         </div>
-        <div class="past">
+        <div class="past" id="past-play">
           <svg width="21" height="5" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z" fill="currentColor" fill-rule="evenodd"/></svg>
           <p class="day prev">Yesterday - 2hrs</p>
           <p class="week prev">Last Week - 8hrs </p>
@@ -65,13 +66,13 @@
     </div>
     <div class="study container">
       <section>
-        <div class="current">
+        <div class="current" id="current-study">
           <h5>Study</h5>
           <h1 class="daily time">0hrs</h1>
           <h1 class="weekly time">4hrs</h1>
           <h1 class="monthly time">13hrs</h1>
         </div>
-        <div class="past">
+        <div class="past" id="past-study">
           <svg width="21" height="5" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z" fill="currentColor" fill-rule="evenodd"/></svg>
           <p class="day prev">Yesterday - 1hr</p>
           <p class="week prev">Last Week - 7hrs </p>
@@ -81,13 +82,13 @@
     </div>
     <div class="exercise container">
       <section>
-        <div class="current">
+        <div class="current" id="current-exercise">
           <h5>Exercise</h5>
           <h1 class="daily time">1hr</h1>
           <h1 class="weekly time">4hrs</h1>
           <h1 class="monthly time">11hrs</h1>
         </div>
-        <div class="past">
+        <div class="past" id="past-exercise">
           <svg width="21" height="5" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z" fill="currentColor" fill-rule="evenodd"/></svg>
           <p class="day prev">Yesterday - 1hr</p>
           <p class="week prev">Last Week - 5hrs </p>
@@ -97,13 +98,13 @@
     </div>
     <div class="social container">
       <section>
-        <div class="current">
+        <div class="current" id="current-social">
           <h5>Social</h5>
           <h1 class="daily time">1hr</h1>
           <h1 class="weekly time">5hrs</h1>
           <h1 class="monthly time">21hrs</h1>
         </div>
-        <div class="past">
+        <div class="past" id="past-social">
           <svg width="21" height="5" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z" fill="currentColor" fill-rule="evenodd"/></svg>
           <p class="day prev">Yesterday - 3hrs</p>
           <p class="week prev">Last Week - 10hrs </p>
@@ -113,13 +114,13 @@
     </div>
     <div class="self-care container">
       <section>
-        <div class="current">
+        <div class="current" id="current-self-care">
           <h5>Self Care</h5>
           <h1 class="daily time">0hrs</h1>
           <h1 class="weekly time">2hrs</h1>
           <h1 class="monthly time">7hrs</h1>
         </div>
-        <div class="past">
+        <div class="past" id="past-self-care">
           <svg width="21" height="5" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm8 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z" fill="currentColor" fill-rule="evenodd"/></svg>
           <p class="day prev">Yesterday - 1hr</p>
           <p class="week prev">Last Week - 2hrs</p>
