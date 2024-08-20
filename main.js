@@ -22,7 +22,13 @@ request.responseType = "json";
 request.send();
 request.onload = function () {
     const times = request.response;
+
+    dayBtn.addEventListener("click", (e) => {
+        const myH1 = document.createElement("h1");
+    })
 }
+
+
 
 // fetch("./data.json")
 //     .then(response => response.json())
