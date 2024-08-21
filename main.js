@@ -25,6 +25,8 @@ request.onload = function () {
 
     dayBtn.addEventListener("click", (e) => {
         const myH1 = document.createElement("h1");
+        myH1.textContent = times[0].timeframes.daily.current + " hs";
+        currDivWork.appendChild(myH1);
     })
 }
 
