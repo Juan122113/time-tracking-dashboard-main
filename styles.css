@@ -166,7 +166,7 @@ h5 {
 }
 
 .daily {
-    display: none;
+    display: block;
 }
 
 .weekly {

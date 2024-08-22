@@ -24,9 +24,25 @@ request.onload = function () {
     const times = request.response;
 
     dayBtn.addEventListener("click", (e) => {
+        const myH5 = document.createElement("h5");
+        myH5.textContent = times[0].title;
         const myH1 = document.createElement("h1");
         myH1.textContent = times[0].timeframes.daily.current + " hs";
-        currDivWork.appendChild(myH1);
+        // myH5.setAttribute();
+        myH1.setAttribute("class", "daily time");
+
+        if (currDivWork.childElementCount < 2) {
+            currDivWork.appendChild(myH5);
+            currDivWork.appendChild(myH1);
+        }
+
+        dayBtn.style.color = "white";
+        dayBtn.style.opacity = "1";
+        dayBtn.style.color = "white";
+        dayBtn.style.opacity = "1";
+        dayBtn.style.color = "white";
+        dayBtn.style.opacity = "1";
+        
     })
 }
 
