@@ -30,6 +30,7 @@ request.onload = function () {
         myH1.textContent = times[0].timeframes.daily.current + " hs";
         // myH5.setAttribute();
         myH1.setAttribute("class", "daily time");
+        currDivWork.innerHTML = '';
 
         if (currDivWork.childElementCount < 2) {
             currDivWork.appendChild(myH5);
@@ -38,10 +39,35 @@ request.onload = function () {
 
         dayBtn.style.color = "white";
         dayBtn.style.opacity = "1";
-        dayBtn.style.color = "white";
-        dayBtn.style.opacity = "1";
-        dayBtn.style.color = "white";
-        dayBtn.style.opacity = "1";
+        // weekBtn.style.color = "hsl(236, 100%, 87%)";
+        // weekBtn.style.opacity = "0.5";
+        // monthBtn.style.color = "hsl(236, 100%, 87%)";
+        // monthBtn.style.opacity = "0.5";
+        
+    })
+
+    weekBtn.addEventListener("click", (e) => {
+        const myH5 = document.createElement("h5");
+        myH5.textContent = times[0].title;
+        const myH1 = document.createElement("h1");
+        myH1.textContent = times[0].timeframes.weekly.current + " hs";
+        // myH5.setAttribute();
+        myH1.setAttribute("class", "daily time");
+
+        currDivWork.innerHTML = '';
+
+        if (currDivWork.childElementCount < 2) {
+            
+            currDivWork.appendChild(myH5);
+            currDivWork.appendChild(myH1);
+        }
+
+        weekBtn.style.color = "white";
+        weekBtn.style.opacity = "1";
+        // weekBtn.style.color = "hsl(236, 100%, 87%)";
+        // weekBtn.style.opacity = "0.5";
+        // monthBtn.style.color = "hsl(236, 100%, 87%)";
+        // monthBtn.style.opacity = "0.5";
         
     })
 }
