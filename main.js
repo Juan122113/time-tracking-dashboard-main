@@ -145,6 +145,7 @@ function updateContent(timeframe) {
 
             currDiv.innerHTML = `<h5>${activity.title}</h5><h1>${current}hrs</h1>`;
             pastDiv.textContent = `Last ${getPastLabel(timeframe)} - ${previous}hrs`;
+            pastDiv.setAttribute("class", "prev");
         }
     });
 }

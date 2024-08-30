@@ -325,12 +325,12 @@ svg {
         left: 14%;
     }
 
-    .time {
+    h1 {
         position: relative;
         top: 1em;
         left: 13%;
         font-size: 3em;
-        /* font-weight: 100; */
+        font-weight: 100;
     }
 
     .prev {
