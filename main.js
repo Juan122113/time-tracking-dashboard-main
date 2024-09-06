@@ -101,8 +101,8 @@ const currDivSocial = document.getElementById("current-social");
 const pastDivSocial = document.getElementById("past-social");
 const currDivSelfCare = document.getElementById("current-self-care");
 const pastDivSelfCare = document.getElementById("past-self-care");
-const svg = document.querySelectorAll(".svg");
-const section = document.querySelectorAll(".section");
+const svg = document.querySelectorAll("svg");
+const section = document.querySelectorAll("section");
 
 const buttons = [dayBtn, weekBtn, monthBtn];
 const currDivs = [currDivWork, currDivPlay, currDivStudy, currDivExercise, currDivSocial, currDivSelfCare];
@@ -113,6 +113,9 @@ const activeColor = "white";
 
 let times = [];
 let estáEnHover = false;
+
+console.log(section);
+console.log(svg);
 
 function updateButtonStates(activeButton) {
     buttons.forEach(button => {
@@ -177,19 +180,20 @@ function getPastLabel(timeframe) {
 // svg.addEventListener('mouseleave', alSalir);
 
 function alEntrar() {
-    const elemento = event.target;
+    // const elemento = event.target;
     section.forEach(elemento => {
-        elemento.style.backgroundColor = "hsl(238, 31%, 37%)"});
+        elemento.style.backgroundColor = "hsl(235, 46%, 20%)"});
 }
 
-function alSalir() {
-    const elemento = event.target;
-    section.style.backgroundColor = "hsl(235, 46%, 20%)"
-}
+// function alSalir() {
+//     // const elemento = event.target;
+//     section.forEach(elemento => {
+//     elemento.style.backgroundColor = "hsl(238, 31%, 37%)"});
+// }
 
 svg.forEach(elemento => {
     elemento.addEventListener('mouseenter', alEntrar);
-    elemento.addEventListener('mouseleave', alSalir);
+    // elemento.addEventListener('mouseleave', alSalir);
 });
 
 // Fetch data
