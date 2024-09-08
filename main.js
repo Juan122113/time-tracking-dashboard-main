@@ -125,6 +125,7 @@ function updateButtonStates(activeButton) {
         } else {
             button.style.color = inactiveColor;
             button.style.opacity = "0.5";
+            // button.target.classList.add('tf-hover');
         }
     });
 }
@@ -185,16 +186,29 @@ function alEntrar() {
         elemento.style.backgroundColor = "hsl(235, 46%, 20%)"});
 }
 
-// function alSalir() {
-//     // const elemento = event.target;
-//     section.forEach(elemento => {
-//     elemento.style.backgroundColor = "hsl(238, 31%, 37%)"});
-// }
+function alSalir() {
+    // const elemento = event.target;
+    section.forEach(elemento => {
+    elemento.style.backgroundColor = ""});
+}
 
 svg.forEach(elemento => {
     elemento.addEventListener('mouseenter', alEntrar);
-    // elemento.addEventListener('mouseleave', alSalir);
+    elemento.addEventListener('mouseleave', alSalir);
 });
+
+function agregarHover(event) {
+    event.target.classList.add('tf-hover');
+}
+
+function quitarHover(event) {
+    event.target.classList.remove('tf-hover');
+}
+
+buttons.forEach(button => {
+    button.addEventListener('mouseenter', agregarHover);
+    button.addEventListener('mouseleave', quitarHover);
+})
 
 // Fetch data
 fetch('./data.json')

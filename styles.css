@@ -64,11 +64,6 @@ header {
     right: 4%;
 }
 
-.user-text {
-    /* padding-right: 0.1em; */
-    /* margin-left: -1em; */
-}
-
 .user-subt {
     font-weight: 300;
     font-size: 0.8em;
@@ -177,13 +172,6 @@ h5 {
     display: none;
 }
 
-.past {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: center; */
-    /* align-items: end; */
-}
-
 .time {
     font-weight: 300;
 }
@@ -286,9 +274,14 @@ svg {
     }
 
     .tf:hover {
+        /* color: white;
+        opacity: 1; */
+        cursor: pointer;
+    }
+
+    .tf-hover {
         color: white;
         opacity: 1;
-        cursor: pointer;
     }
 
     #weekly {
