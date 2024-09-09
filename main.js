@@ -116,17 +116,35 @@ let estáEnHover = false;
 
 console.log(section);
 console.log(svg);
+console.log(estáEnHover);
 
 function updateButtonStates(activeButton) {
     buttons.forEach(button => {
-        if (button === activeButton) {
+        if (button === activeButton || estáEnHover) {
             button.style.color = activeColor;
             button.style.opacity = "1";
         } else {
             button.style.color = inactiveColor;
             button.style.opacity = "0.5";
-            // button.target.classList.add('tf-hover');
+            button.addEventListener('mouseenter', agregarHover);
+            button.addEventListener('mouseleave', quitarHover);
         }
+    });
+}
+
+function agregarHover() {
+    estáEnHover = true;
+    buttons.forEach(elemento => {
+        elemento.style.color = "white";
+        elemento.style.opacity = "1";
+    });
+}
+
+function quitarHover() {
+    estáEnHover = false;
+    buttons.forEach(elemento => {
+        elemento.style.color = "";
+        elemento.style.opacity = "";
     });
 }
 
@@ -197,18 +215,10 @@ svg.forEach(elemento => {
     elemento.addEventListener('mouseleave', alSalir);
 });
 
-function agregarHover(event) {
-    event.target.classList.add('tf-hover');
-}
-
-function quitarHover(event) {
-    event.target.classList.remove('tf-hover');
-}
-
-buttons.forEach(button => {
-    button.addEventListener('mouseenter', agregarHover);
-    button.addEventListener('mouseleave', quitarHover);
-})
+// buttons.forEach(button => {
+//     button.addEventListener('mouseenter', agregarHover);
+//     button.addEventListener('mouseleave', quitarHover);
+// })
 
 // Fetch data
 fetch('./data.json')
