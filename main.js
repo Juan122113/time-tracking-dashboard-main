@@ -120,14 +120,20 @@ console.log(estáEnHover);
 
 function updateButtonStates(activeButton) {
     buttons.forEach(button => {
-        if (button === activeButton || estáEnHover) {
+        if (button === activeButton) {
             button.style.color = activeColor;
             button.style.opacity = "1";
         } else {
+            if (!estáEnHover) {
+                button.addEventListener('mouseenter', agregarHover);
+                
+            } else if (button !== activeButton) {
+                button.addEventListener('mouseleave', quitarHover);
+            }
             button.style.color = inactiveColor;
             button.style.opacity = "0.5";
-            button.addEventListener('mouseenter', agregarHover);
-            button.addEventListener('mouseleave', quitarHover);
+            // 
+            // 
         }
     });
 }
