@@ -118,40 +118,50 @@ console.log(section);
 console.log(svg);
 console.log(estáEnHover);
 
+function updateButtonHover(hoverButton) {
+    buttons.forEach(button => {
+        if (button === hoverButton) {
+            button.style.color = activeColor;
+            button.style.opacity = "1";
+        } else {
+            button.style.color = inactiveColor;
+            button.style.opacity = "0.5";
+        }
+    })
+}
+
 function updateButtonStates(activeButton) {
     buttons.forEach(button => {
         if (button === activeButton) {
             button.style.color = activeColor;
             button.style.opacity = "1";
         } else {
-            if (!estáEnHover) {
-                button.addEventListener('mouseenter', agregarHover);
-                
-            } else if (button !== activeButton) {
-                button.addEventListener('mouseleave', quitarHover);
-            }
             button.style.color = inactiveColor;
             button.style.opacity = "0.5";
-            // 
-            // 
         }
     });
 }
 
-function agregarHover() {
-    estáEnHover = true;
-    buttons.forEach(elemento => {
-        elemento.style.color = "white";
-        elemento.style.opacity = "1";
-    });
-}
+// function agregarHover() {
+//     estáEnHover = true;
+//     buttons.forEach(elemento => {
+//         elemento.style.color = "white";
+//         elemento.style.opacity = "1";
+//     });
+// }
 
-function quitarHover() {
-    estáEnHover = false;
-    buttons.forEach(elemento => {
-        elemento.style.color = "";
-        elemento.style.opacity = "";
-    });
+// function quitarHover() {
+//     estáEnHover = false;
+//     buttons.forEach(elemento => {
+//         elemento.style.color = "inactiveColor";
+//         elemento.style.opacity = "0.5";
+//     });
+// }
+
+function handleButtonHover(button) {
+    return function(e) {
+        updateButtonHover(button);
+    }
 }
 
 function handleButtonClick(button, timeframe) {
@@ -160,6 +170,10 @@ function handleButtonClick(button, timeframe) {
         updateContent(timeframe);
     }
 }
+
+dayBtn.addEventListener('mouseenter', handleButtonHover(dayBtn));
+weekBtn.addEventListener('mouseenter', handleButtonHover(weekBtn));
+monthBtn.addEventListener('mouseenter', handleButtonHover(monthBtn));
 
 dayBtn.addEventListener("click", handleButtonClick(dayBtn, "daily"));
 weekBtn.addEventListener("click", handleButtonClick(weekBtn, "weekly"));
