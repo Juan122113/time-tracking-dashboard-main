@@ -112,20 +112,36 @@ const inactiveColor = "hsl(236, 100%, 87%)";
 const activeColor = "white";
 
 let times = [];
-let estáEnHover = false;
+//let estáEnHover = false;
+let isBtnActive = false;
 
 console.log(section);
 console.log(svg);
-console.log(estáEnHover);
+//console.log(estáEnHover);
 
 function updateButtonHover(hoverButton) {
     buttons.forEach(button => {
+        if (!isBtnActive) {
         if (button === hoverButton) {
             button.style.color = activeColor;
             button.style.opacity = "1";
-        } else {
+         } 
+         }//else {
+        //     button.style.color = inactiveColor;
+        //     button.style.opacity = "0.5";
+        // }
+    })
+}
+
+function updateButtonNoHover(noHoverButton) {
+    buttons.forEach(button => {
+        if (!isBtnActive) {
+        if (button === noHoverButton) {
             button.style.color = inactiveColor;
             button.style.opacity = "0.5";
+        } //else {
+            
+        //}
         }
     })
 }
@@ -133,9 +149,11 @@ function updateButtonHover(hoverButton) {
 function updateButtonStates(activeButton) {
     buttons.forEach(button => {
         if (button === activeButton) {
+            isBtnActive = true;
             button.style.color = activeColor;
             button.style.opacity = "1";
         } else {
+            isBtnActive = false;
             button.style.color = inactiveColor;
             button.style.opacity = "0.5";
         }
@@ -164,6 +182,12 @@ function handleButtonHover(button) {
     }
 }
 
+function handleButtonNoHover(button) {
+    return function(e) {
+        updateButtonNoHover(button);
+    }
+}
+
 function handleButtonClick(button, timeframe) {
     return function(e) {
         updateButtonStates(button);
@@ -174,6 +198,10 @@ function handleButtonClick(button, timeframe) {
 dayBtn.addEventListener('mouseenter', handleButtonHover(dayBtn));
 weekBtn.addEventListener('mouseenter', handleButtonHover(weekBtn));
 monthBtn.addEventListener('mouseenter', handleButtonHover(monthBtn));
+
+dayBtn.addEventListener('mouseleave', handleButtonNoHover(dayBtn));
+weekBtn.addEventListener('mouseleave', handleButtonNoHover(weekBtn));
+monthBtn.addEventListener('mouseleave', handleButtonNoHover(monthBtn));
 
 dayBtn.addEventListener("click", handleButtonClick(dayBtn, "daily"));
 weekBtn.addEventListener("click", handleButtonClick(weekBtn, "weekly"));
