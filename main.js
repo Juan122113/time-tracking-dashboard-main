@@ -113,7 +113,7 @@ const activeColor = "white";
 
 let times = [];
 //let estáEnHover = false;
-let isBtnActive = false;
+let btnActive;
 
 console.log(section);
 console.log(svg);
@@ -121,11 +121,11 @@ console.log(svg);
 
 function updateButtonHover(hoverButton) {
     buttons.forEach(button => {
-        if (!isBtnActive) {
+        //if (!isBtnActive) {
         if (button === hoverButton) {
             button.style.color = activeColor;
             button.style.opacity = "1";
-         } 
+         //} 
          }//else {
         //     button.style.color = inactiveColor;
         //     button.style.opacity = "0.5";
@@ -135,25 +135,27 @@ function updateButtonHover(hoverButton) {
 
 function updateButtonNoHover(noHoverButton) {
     buttons.forEach(button => {
-        if (!isBtnActive) {
+        //if (!isBtnActive) {
         if (button === noHoverButton) {
             button.style.color = inactiveColor;
             button.style.opacity = "0.5";
-        } //else {
-            
+        } //else if (isBtnActive) {
+        //     button.style.color = activeColor;
+        //     button.style.opacity = "1";
+        // }
         //}
-        }
     })
 }
 
 function updateButtonStates(activeButton) {
     buttons.forEach(button => {
         if (button === activeButton) {
-            isBtnActive = true;
+            btnActive = button;
+            console.log(btnActive);
             button.style.color = activeColor;
             button.style.opacity = "1";
         } else {
-            isBtnActive = false;
+            //isBtnActive = false;
             button.style.color = inactiveColor;
             button.style.opacity = "0.5";
         }
