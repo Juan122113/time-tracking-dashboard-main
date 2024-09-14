@@ -113,7 +113,7 @@ const activeColor = "white";
 
 let times = [];
 //let estáEnHover = false;
-let btnActive;
+let activeButton = null;
 
 console.log(section);
 console.log(svg);
@@ -147,71 +147,19 @@ console.log(svg);
 //     })
 // }
 
-function updateButtonStates(activeButton) {
+function updateButtonStates(clickedButton) {
+    activeButton = clickedButton;
     buttons.forEach(button => {
         if (button === activeButton) {
-            btnActive = button;
-            console.log(btnActive);
+            //btnActive = button;
+            //console.log(btnActive);
             button.style.color = activeColor;
             button.style.opacity = "1";
-        } else if (button !== activeButton) {
+        } else {
             //isBtnActive = false;
             button.style.color = inactiveColor;
             button.style.opacity = "0.5";
-
-            function updateButtonHover(hoverButton) {
-                buttons.forEach(button => {
-                    //if (!isBtnActive) {
-                    if (button === hoverButton) {
-                        button.style.color = activeColor;
-                        button.style.opacity = "1";
-                     //} 
-                     }//else {
-                    //     button.style.color = inactiveColor;
-                    //     button.style.opacity = "0.5";
-                    // }
-                })
-            }
-
-            function updateButtonNoHover(noHoverButton) {
-                buttons.forEach(button => {
-                    //if (!isBtnActive) {
-                    if (button === noHoverButton) {
-                        button.style.color = inactiveColor;
-                        button.style.opacity = "0.5";
-                    } //else if (isBtnActive) {
-                    //     button.style.color = activeColor;
-                    //     button.style.opacity = "1";
-                    // }
-                    //}
-                })
-            }
-
-            function handleButtonHover(button) {
-                return function(e) {
-                    updateButtonHover(button);
-                }
-            }
-
-            function handleButtonNoHover(button) {
-                return function(e) {
-                    updateButtonNoHover(button);
-                }
-            }
-
-            // dayBtn.addEventListener('mouseenter', handleButtonHover(dayBtn));
-            // weekBtn.addEventListener('mouseenter', handleButtonHover(weekBtn));
-            // monthBtn.addEventListener('mouseenter', handleButtonHover(monthBtn));
-
-            button.addEventListener('mouseenter', handleButtonHover(button));
-
-            // dayBtn.addEventListener('mouseleave', handleButtonNoHover(dayBtn));
-            // weekBtn.addEventListener('mouseleave', handleButtonNoHover(weekBtn));
-            // monthBtn.addEventListener('mouseleave', handleButtonNoHover(monthBtn));
-
-            button.addEventListener('mouseleave', handleButtonNoHover(button));
         }
-
     });
 }
 
@@ -243,12 +191,75 @@ function updateButtonStates(activeButton) {
 //     }
 // }
 
+// function updateButtonHover(hoverButton) {
+//     //buttons.forEach(button => {
+//         //if (!isBtnActive) {
+//         // if (button === hoverButton) {
+//             hoverButton.style.color = activeColor;
+//             button.style.opacity = "1";
+//          //} 
+//          //}//else {
+//         //     button.style.color = inactiveColor;
+//         //     button.style.opacity = "0.5";
+//         // }
+//     //})
+// }
+
+// function updateButtonNoHover(noHoverButton) {
+//     //buttons.forEach(button => {
+//         //if (!isBtnActive) {
+//         // if (button === noHoverButton) {
+//             noHoverButton.style.color = inactiveColor;
+//             button.style.opacity = "0.5";
+//       //  } //else if (isBtnActive) {
+//         //     button.style.color = activeColor;
+//         //     button.style.opacity = "1";
+//         // }
+//         //}
+//    // })
+// }
+
+function handleButtonHover(button) {
+    return function() {
+        if (button !== activeButton) {
+            noHoverButton.style.color = activeColor;
+            button.style.opacity = "1";
+        }
+        updateButtonHover(button);
+    }
+}
+
+function handleButtonNoHover(button) {
+    return function() {
+        if (button !== activeButton) {
+            noHoverButton.style.color = inactiveColor;
+            button.style.opacity = "0.5";
+        }
+        // updateButtonNoHover(button);
+    }
+}
+
+// dayBtn.addEventListener('mouseenter', handleButtonHover(dayBtn));
+// weekBtn.addEventListener('mouseenter', handleButtonHover(weekBtn));
+// monthBtn.addEventListener('mouseenter', handleButtonHover(monthBtn));
+
+
+
+// dayBtn.addEventListener('mouseleave', handleButtonNoHover(dayBtn));
+// weekBtn.addEventListener('mouseleave', handleButtonNoHover(weekBtn));
+// monthBtn.addEventListener('mouseleave', handleButtonNoHover(monthBtn));
+
 function handleButtonClick(button, timeframe) {
     return function(e) {
         updateButtonStates(button);
         updateContent(timeframe);
     }
 }
+
+buttons.forEach(button => {
+    button.addEventListener('mouseenter', handleButtonHover(button));
+    button.addEventListener('mouseleave', handleButtonNoHover(button));
+})
 
 // dayBtn.addEventListener('mouseenter', handleButtonHover(dayBtn));
 // weekBtn.addEventListener('mouseenter', handleButtonHover(weekBtn));
