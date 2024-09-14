@@ -119,33 +119,33 @@ console.log(section);
 console.log(svg);
 //console.log(estáEnHover);
 
-function updateButtonHover(hoverButton) {
-    buttons.forEach(button => {
-        //if (!isBtnActive) {
-        if (button === hoverButton) {
-            button.style.color = activeColor;
-            button.style.opacity = "1";
-         //} 
-         }//else {
-        //     button.style.color = inactiveColor;
-        //     button.style.opacity = "0.5";
-        // }
-    })
-}
+// function updateButtonHover(hoverButton) {
+//     buttons.forEach(button => {
+//         //if (!isBtnActive) {
+//         if (button === hoverButton) {
+//             button.style.color = activeColor;
+//             button.style.opacity = "1";
+//          //} 
+//          }//else {
+//         //     button.style.color = inactiveColor;
+//         //     button.style.opacity = "0.5";
+//         // }
+//     })
+// }
 
-function updateButtonNoHover(noHoverButton) {
-    buttons.forEach(button => {
-        //if (!isBtnActive) {
-        if (button === noHoverButton) {
-            button.style.color = inactiveColor;
-            button.style.opacity = "0.5";
-        } //else if (isBtnActive) {
-        //     button.style.color = activeColor;
-        //     button.style.opacity = "1";
-        // }
-        //}
-    })
-}
+// function updateButtonNoHover(noHoverButton) {
+//     buttons.forEach(button => {
+//         //if (!isBtnActive) {
+//         if (button === noHoverButton) {
+//             button.style.color = inactiveColor;
+//             button.style.opacity = "0.5";
+//         } //else if (isBtnActive) {
+//         //     button.style.color = activeColor;
+//         //     button.style.opacity = "1";
+//         // }
+//         //}
+//     })
+// }
 
 function updateButtonStates(activeButton) {
     buttons.forEach(button => {
@@ -154,11 +154,64 @@ function updateButtonStates(activeButton) {
             console.log(btnActive);
             button.style.color = activeColor;
             button.style.opacity = "1";
-        } else {
+        } else if (button !== activeButton) {
             //isBtnActive = false;
             button.style.color = inactiveColor;
             button.style.opacity = "0.5";
+
+            function updateButtonHover(hoverButton) {
+                buttons.forEach(button => {
+                    //if (!isBtnActive) {
+                    if (button === hoverButton) {
+                        button.style.color = activeColor;
+                        button.style.opacity = "1";
+                     //} 
+                     }//else {
+                    //     button.style.color = inactiveColor;
+                    //     button.style.opacity = "0.5";
+                    // }
+                })
+            }
+
+            function updateButtonNoHover(noHoverButton) {
+                buttons.forEach(button => {
+                    //if (!isBtnActive) {
+                    if (button === noHoverButton) {
+                        button.style.color = inactiveColor;
+                        button.style.opacity = "0.5";
+                    } //else if (isBtnActive) {
+                    //     button.style.color = activeColor;
+                    //     button.style.opacity = "1";
+                    // }
+                    //}
+                })
+            }
+
+            function handleButtonHover(button) {
+                return function(e) {
+                    updateButtonHover(button);
+                }
+            }
+
+            function handleButtonNoHover(button) {
+                return function(e) {
+                    updateButtonNoHover(button);
+                }
+            }
+
+            // dayBtn.addEventListener('mouseenter', handleButtonHover(dayBtn));
+            // weekBtn.addEventListener('mouseenter', handleButtonHover(weekBtn));
+            // monthBtn.addEventListener('mouseenter', handleButtonHover(monthBtn));
+
+            button.addEventListener('mouseenter', handleButtonHover(button));
+
+            // dayBtn.addEventListener('mouseleave', handleButtonNoHover(dayBtn));
+            // weekBtn.addEventListener('mouseleave', handleButtonNoHover(weekBtn));
+            // monthBtn.addEventListener('mouseleave', handleButtonNoHover(monthBtn));
+
+            button.addEventListener('mouseleave', handleButtonNoHover(button));
         }
+
     });
 }
 
@@ -178,17 +231,17 @@ function updateButtonStates(activeButton) {
 //     });
 // }
 
-function handleButtonHover(button) {
-    return function(e) {
-        updateButtonHover(button);
-    }
-}
+// function handleButtonHover(button) {
+//     return function(e) {
+//         updateButtonHover(button);
+//     }
+// }
 
-function handleButtonNoHover(button) {
-    return function(e) {
-        updateButtonNoHover(button);
-    }
-}
+// function handleButtonNoHover(button) {
+//     return function(e) {
+//         updateButtonNoHover(button);
+//     }
+// }
 
 function handleButtonClick(button, timeframe) {
     return function(e) {
@@ -197,13 +250,13 @@ function handleButtonClick(button, timeframe) {
     }
 }
 
-dayBtn.addEventListener('mouseenter', handleButtonHover(dayBtn));
-weekBtn.addEventListener('mouseenter', handleButtonHover(weekBtn));
-monthBtn.addEventListener('mouseenter', handleButtonHover(monthBtn));
+// dayBtn.addEventListener('mouseenter', handleButtonHover(dayBtn));
+// weekBtn.addEventListener('mouseenter', handleButtonHover(weekBtn));
+// monthBtn.addEventListener('mouseenter', handleButtonHover(monthBtn));
 
-dayBtn.addEventListener('mouseleave', handleButtonNoHover(dayBtn));
-weekBtn.addEventListener('mouseleave', handleButtonNoHover(weekBtn));
-monthBtn.addEventListener('mouseleave', handleButtonNoHover(monthBtn));
+// dayBtn.addEventListener('mouseleave', handleButtonNoHover(dayBtn));
+// weekBtn.addEventListener('mouseleave', handleButtonNoHover(weekBtn));
+// monthBtn.addEventListener('mouseleave', handleButtonNoHover(monthBtn));
 
 dayBtn.addEventListener("click", handleButtonClick(dayBtn, "daily"));
 weekBtn.addEventListener("click", handleButtonClick(weekBtn, "weekly"));
