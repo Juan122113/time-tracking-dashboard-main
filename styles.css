@@ -207,7 +207,7 @@ svg {
     main {
         display: grid;
         grid-template-columns: 14.2em repeat(3, 14.5em);
-        grid-template-rows: repeat(2, 13.5em);
+        grid-template-rows: repeat(2, 13.6em);
         place-content: center;
         place-items: center;
         min-height: 100vh;
