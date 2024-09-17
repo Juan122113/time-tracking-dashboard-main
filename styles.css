@@ -200,7 +200,7 @@ svg {
     left: 0;
 }
 
-.attribution a { color: hsl(228, 45%, 44%); }
+.attribution a { color: var(--Pale-Blue); }
 
 @media (min-width: 1100px) {
 
