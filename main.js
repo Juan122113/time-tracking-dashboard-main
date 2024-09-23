@@ -124,7 +124,7 @@ fetch('./data.json')
     .then(response => response.json())
     .then(data => {
         times = data;
-        updateButtonStates(dayBtn);
-        updateContent("daily");
+        updateButtonStates(weekBtn);
+        updateContent("weekly");
     })
     .catch(error => console.error('Error:', error));
