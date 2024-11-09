@@ -19,6 +19,7 @@ const section = document.querySelectorAll("section");
 const buttons = [dayBtn, weekBtn, monthBtn];
 const currDivs = [currDivWork, currDivPlay, currDivStudy, currDivExercise, currDivSocial, currDivSelfCare];
 const pastDivs = [pastDivWork, pastDivPlay, pastDivStudy, pastDivExercise, pastDivSocial, pastDivSelfCare];
+const timeFrames = ["daily", "weekly", "monthly"]
 
 const inactiveColor = "hsl(236, 100%, 87%)";
 const activeColor = "white";
@@ -72,9 +73,21 @@ buttons.forEach(button => {
     button.addEventListener('mouseleave', handleButtonNoHover(button));
 })
 
-dayBtn.addEventListener("click", handleButtonClick(dayBtn, "daily"));
-weekBtn.addEventListener("click", handleButtonClick(weekBtn, "weekly"));
-monthBtn.addEventListener("click", handleButtonClick(monthBtn, "monthly"));
+// dayBtn.addEventListener("click", handleButtonClick(dayBtn, "daily"));
+// weekBtn.addEventListener("click", handleButtonClick(weekBtn, "weekly"));
+// monthBtn.addEventListener("click", handleButtonClick(monthBtn, "monthly"));
+
+// buttons.forEach(button => {
+//     timeFrames.forEach(timeframe => {
+//         button.addEventListener('click', handleButtonClick(button, timeframe));
+//     })
+// })
+
+// let i = 0;
+
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', handleButtonClick(buttons[i], timeFrames[i]));
+}
 
 function updateContent(timeframe) {
     times.forEach((activity, index) => {
