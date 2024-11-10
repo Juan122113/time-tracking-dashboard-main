@@ -19,26 +19,34 @@ const section = document.querySelectorAll("section");
 const buttons = [dayBtn, weekBtn, monthBtn];
 const currDivs = [currDivWork, currDivPlay, currDivStudy, currDivExercise, currDivSocial, currDivSelfCare];
 const pastDivs = [pastDivWork, pastDivPlay, pastDivStudy, pastDivExercise, pastDivSocial, pastDivSelfCare];
-const timeFrames = ["daily", "weekly", "monthly"]
-
-const inactiveColor = "hsl(236, 100%, 87%)";
-const activeColor = "white";
+const timeFrames = ["daily", "weekly", "monthly"];
+const buttonStyles = ["color", "opacity"];
+const inactiveColor = ["hsl(236, 100%, 87%)", "0.5"];
+const activeColor = ["white", "1"];
 
 let times = [];
 let activeButton = null;
 
-console.log(section);
-console.log(svg);
+// console.log(section);
+// console.log(svg);
 
 function updateButtonStates(clickedButton) {
     activeButton = clickedButton;
     buttons.forEach(button => {
         if (button === activeButton) {
-            button.style.color = activeColor;
-            button.style.opacity = "1";
+            // button.style.color = activeColor;
+            // button.style.opacity = "1";
+            for (let i = 0; i < buttonStyles.length; i++) {
+                button.style.buttonStyles[i] = activeColor[i];
+                console.log(activeColor[i]);
+            }
         } else {
-            button.style.color = inactiveColor;
-            button.style.opacity = "0.5";
+            // button.style.color = inactiveColor;
+            // button.style.opacity = "0.5";
+            for (let i = 0; i < buttonStyles.length; i++) {
+                button.style.buttonStyles[i] = inactiveColor[i];
+                console.log(inactiveColor[i]);
+            }
         }
     });
 }
@@ -46,8 +54,11 @@ function updateButtonStates(clickedButton) {
 function handleButtonHover(button) {
     return function() {
         if (button !== activeButton) {
-            button.style.color = activeColor;
-            button.style.opacity = "1";
+            // button.style.color = activeColor;
+            // button.style.opacity = "1";
+            for (let i = 0; i < buttonStyles.length; i++) {
+                button.style.buttonStyles[i] = activeColor[i];
+            }
         }
     }
 }
@@ -55,8 +66,11 @@ function handleButtonHover(button) {
 function handleButtonNoHover(button) {
     return function() {
         if (button !== activeButton) {
-            button.style.color = inactiveColor;
-            button.style.opacity = "0.5";
+            // button.style.color = inactiveColor;
+            // button.style.opacity = "0.5";
+            for (let i = 0; i < buttonStyles.length; i++) {
+                button.style.buttonStyles[i] = inactiveColor[i];
+            }
         }
     }
 }
@@ -130,7 +144,7 @@ svg.forEach(elemento => {
     elemento.addEventListener('mouseleave', alSalir);
 });
 
-console.log(activeButton);
+// console.log(activeButton);
 
 // Fetch data
 fetch('./data.json')
