@@ -23,6 +23,8 @@ const timeFrames = ["daily", "weekly", "monthly"];
 const buttonStyles = ["color", "opacity"];
 const inactiveColor = ["hsl(236, 100%, 87%)", "0.5"];
 const activeColor = ["white", "1"];
+const mouseStates = ['mouseenter', 'mouseleave'];
+const handleHover = ["handleButtonHover", "handleButtonNoHover"];
 
 let times = [];
 let activeButton = null;
@@ -88,10 +90,26 @@ function handleButtonClick(button, timeframe) {
     }
 }
 
+// for (let k = 0; k < mouseStates.length; k++) {
+//     buttons.forEach(button => {
+//                     button.addEventListener(mouseStates[k], handleHover[k](button));
+//                     // button.addEventListener('mouseleave', handleButtonNoHover(button));
+//                 })
+// }
+
+// handleHover.forEach(hover => {
+//     mouseStates.forEach(mouseState => {
+//         buttons.forEach(button => {
+//             button.addEventListener(mouseState, hover(button));
+//             // button.addEventListener('mouseleave', handleButtonNoHover(button));
+//         })
+//     });
+// });
+
 buttons.forEach(button => {
     button.addEventListener('mouseenter', handleButtonHover(button));
     button.addEventListener('mouseleave', handleButtonNoHover(button));
-})
+});
 
 // dayBtn.addEventListener("click", handleButtonClick(dayBtn, "daily"));
 // weekBtn.addEventListener("click", handleButtonClick(weekBtn, "weekly"));
