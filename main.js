@@ -24,7 +24,7 @@ const buttonStyles = ["color", "opacity"];
 const inactiveColor = ["hsl(236, 100%, 87%)", "0.5"];
 const activeColor = ["white", "1"];
 const mouseStates = ['mouseenter', 'mouseleave'];
-const handleHover = ["handleButtonHover", "handleButtonNoHover"];
+// const handleHover = ["handleButtonHover", "handleButtonNoHover"];
 
 let times = [];
 let activeButton = null;
@@ -59,29 +59,47 @@ function updateButtonStates(clickedButton, buttonStyles, activeColor, inactiveCo
 
 // console.log(activeColor);
 
-function handleButtonHover(button) {
+function handleButtonHover(button, mouseState) {
     return function() {
         if (button !== activeButton) {
             // button.style.color = activeColor;
             // button.style.opacity = "1";
-            for (let i = 0; i < buttonStyles.length; i++) {
-                button.style[buttonStyles[i]] = activeColor[i];
+            if (mouseState === 'mouseenter') {
+                for (let i = 0; i < buttonStyles.length; i++) {
+                    button.style[buttonStyles[i]] = activeColor[i];
+                }
+            } else {
+                for (let i = 0; i < buttonStyles.length; i++) {
+                    button.style[buttonStyles[i]] = inactiveColor[i];
+                }
             }
         }
     }
 }
 
-function handleButtonNoHover(button) {
-    return function() {
-        if (button !== activeButton) {
-            // button.style.color = inactiveColor;
-            // button.style.opacity = "0.5";
-            for (let i = 0; i < buttonStyles.length; i++) {
-                button.style[buttonStyles[i]] = inactiveColor[i];
-            }
-        }
-    }
-}
+// function handleButtonHover(button) {
+//     return function() {
+//         if (button !== activeButton) {
+//             // button.style.color = activeColor;
+//             // button.style.opacity = "1";
+//             for (let i = 0; i < buttonStyles.length; i++) {
+//                 button.style[buttonStyles[i]] = activeColor[i];
+//             }
+//         }
+//     }
+// }
+
+// function handleButtonNoHover(button) {
+//     return function() {
+//         if (button !== activeButton) {
+//             // button.style.color = inactiveColor;
+//             // button.style.opacity = "0.5";
+//             for (let i = 0; i < buttonStyles.length; i++) {
+//                 button.style[buttonStyles[i]] = inactiveColor[i];
+//             }
+//         }
+//     }
+// }
 
 function handleButtonClick(button, timeframe) {
     return function(e) {
@@ -89,6 +107,13 @@ function handleButtonClick(button, timeframe) {
         updateContent(timeframe);
     }
 }
+
+mouseStates.forEach(mouseState => {
+    buttons.forEach(button => {
+        button.addEventListener(mouseState, handleButtonHover(button, mouseState));
+        // button.addEventListener('mouseleave', handleButtonNoHover(button));
+    })
+})
 
 // for (let k = 0; k < mouseStates.length; k++) {
 //     buttons.forEach(button => {
@@ -106,10 +131,10 @@ function handleButtonClick(button, timeframe) {
 //     });
 // });
 
-buttons.forEach(button => {
-    button.addEventListener('mouseenter', handleButtonHover(button));
-    button.addEventListener('mouseleave', handleButtonNoHover(button));
-});
+// buttons.forEach(button => {
+//     button.addEventListener('mouseenter', handleButtonHover(button));
+//     button.addEventListener('mouseleave', handleButtonNoHover(button));
+// });
 
 // dayBtn.addEventListener("click", handleButtonClick(dayBtn, "daily"));
 // weekBtn.addEventListener("click", handleButtonClick(weekBtn, "weekly"));
