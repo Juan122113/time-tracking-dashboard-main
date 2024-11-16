@@ -59,23 +59,42 @@ function updateButtonStates(clickedButton, buttonStyles, activeColor, inactiveCo
 
 // console.log(activeColor);
 
+const validations = {
+    'mouseenter': (button) => {for (let i = 0; i < buttonStyles.length; i++) {
+        button.style[buttonStyles[i]] = activeColor[i];
+    }},
+    'mouseleave': (button) => {for (let i = 0; i < buttonStyles.length; i++) {
+        button.style[buttonStyles[i]] = inactiveColor[i];
+    }}
+};
+
 function handleButtonHover(button, mouseState) {
     return function() {
         if (button !== activeButton) {
             // button.style.color = activeColor;
             // button.style.opacity = "1";
-            if (mouseState === 'mouseenter') {
-                for (let i = 0; i < buttonStyles.length; i++) {
-                    button.style[buttonStyles[i]] = activeColor[i];
-                }
-            } else {
-                for (let i = 0; i < buttonStyles.length; i++) {
-                    button.style[buttonStyles[i]] = inactiveColor[i];
-                }
-            }
+            return validations[mouseState](button);
         }
     }
 }
+
+// function handleButtonHover(button, mouseState) {
+//     return function() {
+//         if (button !== activeButton) {
+//             // button.style.color = activeColor;
+//             // button.style.opacity = "1";
+//             if (mouseState === 'mouseenter') {
+//                 for (let i = 0; i < buttonStyles.length; i++) {
+//                     button.style[buttonStyles[i]] = activeColor[i];
+//                 }
+//             } else {
+//                 for (let i = 0; i < buttonStyles.length; i++) {
+//                     button.style[buttonStyles[i]] = inactiveColor[i];
+//                 }
+//             }
+//         }
+//     }
+// }
 
 // function handleButtonHover(button) {
 //     return function() {
