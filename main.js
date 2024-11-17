@@ -123,7 +123,7 @@ function handleButtonHover(button, mouseState) {
 function handleButtonClick(button, timeframe) {
     return function(e) {
         updateButtonStates(button, buttonStyles, activeColor, inactiveColor);
-        updateContent(timeframe);
+        updateContent(timeframe, times);
     }
 }
 
@@ -171,7 +171,7 @@ for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', handleButtonClick(buttons[i], timeFrames[i]));
 }
 
-function updateContent(timeframe) {
+function updateContent(timeframe, times) {
     times.forEach((activity, index) => {
         const currDiv = currDivs[index];
         const pastDiv = pastDivs[index];
@@ -187,22 +187,29 @@ function updateContent(timeframe) {
     });
 }
 
+const getLabel = {
+    'daily': 'Day',
+    'weekly': 'Week',
+    'monthly': 'Month'
+}
+
 function getPastLabel(timeframe) {
-    switch(timeframe) {
-        case 'daily': return 'Day';
-        case 'weekly': return 'Week';
-        case 'monthly': return 'Month';
-        default: return '';
-    }
+    return getLabel[timeframe];
+    // switch(timeframe) {
+    //     case 'daily': return 'Day';
+    //     case 'weekly': return 'Week';
+    //     case 'monthly': return 'Month';
+    //     // default: return '';
+    // }
 }
 
 /// 3 dots hover
-function alEntrar() {
+function alEntrar(section) {
     section.forEach(elemento => {
         elemento.style.backgroundColor = "hsl(235, 46%, 20%)"});
 }
 
-function alSalir() {
+function alSalir(section) {
     section.forEach(elemento => {
     elemento.style.backgroundColor = ""});
 }
@@ -220,6 +227,6 @@ fetch('./data.json')
     .then(data => {
         times = data;
         updateButtonStates(weekBtn, buttonStyles, activeColor, inactiveColor);
-        updateContent("weekly");
+        updateContent("weekly", times);
     })
     .catch(error => console.error('Error:', error));
