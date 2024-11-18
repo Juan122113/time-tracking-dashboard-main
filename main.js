@@ -171,6 +171,26 @@ for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', handleButtonClick(buttons[i], timeFrames[i]));
 }
 
+function assigningVarDivs(activity, index, currDivs, pastDivs) {
+    const currDiv = currDivs[index];
+    const pastDiv = pastDivs[index];
+
+        //if (currDiv && pastDiv) {
+            const current = activity.timeframes[timeframe].current;
+            const previous = activity.timeframes[timeframe].previous;
+
+            currDiv.innerHTML = `<h5>${activity.title}</h5><h1>${current}hrs</h1>`;
+            pastDiv.textContent = `Last ${getPastLabel(timeframe)} - ${previous}hrs`;
+            pastDiv.setAttribute("class", "prev");
+        //}
+}
+
+function updateContent(timeframe, times, currDivs, pastDivs) {
+    times.forEach((activity, index) => {
+        assigningVarDivs(activity, index, currDivs, pastDivs);
+    });
+}
+
 function updateContent(timeframe, times) {
     times.forEach((activity, index) => {
         const currDiv = currDivs[index];
