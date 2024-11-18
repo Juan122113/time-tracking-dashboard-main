@@ -31,6 +31,7 @@ let activeButton = null;
 
 // console.log(section);
 // console.log(svg);
+console.log(currDivs);
 
 function updateButtonStates(clickedButton, buttonStyles, activeColor, inactiveColor) {
     activeButton = clickedButton;
@@ -171,41 +172,35 @@ for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', handleButtonClick(buttons[i], timeFrames[i]));
 }
 
-function assigningVarDivs(activity, index, currDivs, pastDivs) {
-    const currDiv = currDivs[index];
-    const pastDiv = pastDivs[index];
+function assigningPastDiv {
 
-        //if (currDiv && pastDiv) {
-            const current = activity.timeframes[timeframe].current;
-            const previous = activity.timeframes[timeframe].previous;
-
-            currDiv.innerHTML = `<h5>${activity.title}</h5><h1>${current}hrs</h1>`;
-            pastDiv.textContent = `Last ${getPastLabel(timeframe)} - ${previous}hrs`;
-            pastDiv.setAttribute("class", "prev");
-        //}
 }
 
-function updateContent(timeframe, times, currDivs, pastDivs) {
-    times.forEach((activity, index) => {
-        assigningVarDivs(activity, index, currDivs, pastDivs);
-    });
+function assigningCurrDiv(activity, index, timeframe) {
+    const currDiv = currDivs[index];
 }
 
 function updateContent(timeframe, times) {
     times.forEach((activity, index) => {
-        const currDiv = currDivs[index];
-        const pastDiv = pastDivs[index];
-
-        if (currDiv && pastDiv) {
-            const current = activity.timeframes[timeframe].current;
-            const previous = activity.timeframes[timeframe].previous;
-
-            currDiv.innerHTML = `<h5>${activity.title}</h5><h1>${current}hrs</h1>`;
-            pastDiv.textContent = `Last ${getPastLabel(timeframe)} - ${previous}hrs`;
-            pastDiv.setAttribute("class", "prev");
-        }
+        assigningCurrDiv(activity, index, timeframe);
     });
 }
+
+// function updateContent(timeframe, times) {
+//     times.forEach((activity, index) => {
+//         const currDiv = currDivs[index];
+//         const pastDiv = pastDivs[index];
+
+//         if (currDiv && pastDiv) {
+//             const current = activity.timeframes[timeframe].current;
+//             const previous = activity.timeframes[timeframe].previous;
+
+//             currDiv.innerHTML = `<h5>${activity.title}</h5><h1>${current}hrs</h1>`;
+//             pastDiv.textContent = `Last ${getPastLabel(timeframe)} - ${previous}hrs`;
+//             pastDiv.setAttribute("class", "prev");
+//         }
+//     });
+// }
 
 const getLabel = {
     'daily': 'Day',
@@ -224,15 +219,53 @@ function getPastLabel(timeframe) {
 }
 
 /// 3 dots hover
-function alEntrar(section) {
-    section.forEach(elemento => {
-        elemento.style.backgroundColor = "hsl(235, 46%, 20%)"});
+console.log(section);
+
+// function assigningStyleElementoAlEntrar(section, j) {
+//     section[j].style.backgroundColor = "hsl(235, 46%, 20%)";
+// }
+
+// function alEntrar(section) {
+//     for (let j = 0; j < section.length; j++) {
+//     assigningStyleElementoAlEntrar(section, j)};
+// }
+
+function assigningStyleElementoAlEntrar(elemento) {
+    elemento.style.backgroundColor = "hsl(235, 46%, 20%)";
 }
 
-function alSalir(section) {
+function alEntrar() {
     section.forEach(elemento => {
-    elemento.style.backgroundColor = ""});
+        assigningStyleElementoAlEntrar(elemento);});
 }
+
+function assigningStyleElementoAlSalir(elemento) {
+    elemento.style.backgroundColor = "";
+}
+
+function alSalir() {
+    section.forEach(elemento => {
+        assigningStyleElementoAlSalir(elemento);});
+}
+
+// function alEntrar(section) {
+//     section.forEach(elemento => {
+//         assigningStyleElementoAlEntrar(elemento)});
+// }
+
+// function assigningStyleElementoAlSalir(section, i) {
+//     section[i].style.backgroundColor = "";
+// }
+
+// function alSalir(section) {
+//     for (let i = 0; i < section.length; i++) {
+//     assigningStyleElementoAlSalir(section, i)};
+// }
+
+// function alSalir(section) {
+//     section.forEach(elemento => {
+//     assigningStyleElementoAlSalir(elemento)});
+// }
 
 svg.forEach(elemento => {
     elemento.addEventListener('mouseenter', alEntrar);
