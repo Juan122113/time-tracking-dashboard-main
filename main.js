@@ -33,7 +33,7 @@ let activeButton = null;
 // console.log(svg);
 console.log(currDivs);
 
-function updateButtonStates(clickedButton, buttonStyles, activeColor, inactiveColor) {
+function updateButtonStates(clickedButton, buttonStyles, activeColor, inactiveColor, buttons) {
     activeButton = clickedButton;
     buttons.forEach(button => {
         if (button === activeButton) {
@@ -69,7 +69,7 @@ const validations = {
     }}
 };
 
-function handleButtonHover(button, mouseState) {
+function handleButtonHover(button, mouseState, validations) {
     return function() {
         if (button !== activeButton) {
             // button.style.color = activeColor;
@@ -123,14 +123,14 @@ function handleButtonHover(button, mouseState) {
 
 function handleButtonClick(button, timeframe) {
     return function(e) {
-        updateButtonStates(button, buttonStyles, activeColor, inactiveColor);
+        updateButtonStates(button, buttonStyles, activeColor, inactiveColor, buttons);
         updateContent(timeframe, times);
     }
 }
 
 mouseStates.forEach(mouseState => {
     buttons.forEach(button => {
-        button.addEventListener(mouseState, handleButtonHover(button, mouseState));
+        button.addEventListener(mouseState, handleButtonHover(button, mouseState, validations));
         // button.addEventListener('mouseleave', handleButtonNoHover(button));
     })
 })
@@ -172,17 +172,40 @@ for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', handleButtonClick(buttons[i], timeFrames[i]));
 }
 
+function assigningPastDivSetAtt(pastDiv) {
+    pastDiv.setAttribute("class", "prev");
+}
+
+function assigningPastDivTextCont(timeframe, pastDiv, previous) {
+    pastDiv.textContent = `Last ${getPastLabel(timeframe)} - ${previous}hrs`;
+    assigningPastDivSetAtt(pastDiv);
+
+}
+
+function assigningCurrDivInnerHTML(timeframe, activity, currDiv, pastDiv, current, previous) {
+    currDiv.innerHTML = `<h5>${activity.title}</h5><h1>${current}hrs</h1>`;
+    assigningPastDivTextCont(timeframe, pastDiv, previous);
+            
+}
+
+function assigningPreviousVar(timeframe, activity, currDiv, pastDiv, current) {
+    const previous = activity.timeframes[timeframe].previous;
+    assigningCurrDivInnerHTML(timeframe, activity, currDiv, pastDiv, current, previous);
+}
+
+function assigningCurrentVar(timeframe, activity, currDiv, pastDiv) {
+    const current = activity.timeframes[timeframe].current;
+    assigningPreviousVar(timeframe, activity, currDiv, pastDiv, current);
+            
+}
+
 function assigningPastDiv(timeframe, activity, index, currDiv) {
     const pastDiv = pastDivs[index];
+    assigningCurrentVar(timeframe, activity, currDiv, pastDiv);
 
-        if (currDiv && pastDiv) {
-            const current = activity.timeframes[timeframe].current;
-            const previous = activity.timeframes[timeframe].previous;
-
-            currDiv.innerHTML = `<h5>${activity.title}</h5><h1>${current}hrs</h1>`;
-            pastDiv.textContent = `Last ${getPastLabel(timeframe)} - ${previous}hrs`;
-            pastDiv.setAttribute("class", "prev");
-        }
+        // if (currDiv && pastDiv) {
+            
+        // }
 }
 
 function assigningCurrDiv(timeframe, activity, index) {
@@ -289,7 +312,7 @@ fetch('./data.json')
     .then(response => response.json())
     .then(data => {
         times = data;
-        updateButtonStates(weekBtn, buttonStyles, activeColor, inactiveColor);
-        updateContent("weekly", times);
+        updateButtonStates(weekBtn, buttonStyles, activeColor, inactiveColor, buttons);
+        updateContent("weekly", times, currDivs);
     })
     .catch(error => console.error('Error:', error));
