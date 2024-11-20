@@ -33,28 +33,47 @@ let activeButton = null;
 // console.log(svg);
 console.log(currDivs);
 
+function elseFor(buttonStyles, inactiveColor, button) {
+    for (let k = 0; k < buttonStyles.length; k++) {
+        button.style[buttonStyles[k]] = inactiveColor[k];
+        // console.log(inactiveColor[i]);
+    }
+}
+
+function ifFor(buttonStyles, activeColor, button) {
+    for (let i = 0; i < buttonStyles.length; i++) {
+        button.style[buttonStyles[i]] = activeColor[i];
+    }
+}
+
+function separatingActiveButtonAndInactive(buttonStyles, activeColor, inactiveColor, button) {
+    if (button === activeButton) {
+        ifFor(buttonStyles, activeColor, button);
+        // button.style.color = activeColor;
+        // button.style.opacity = "1";
+       
+            // console.log(activeColor[i]);
+        // console.log(activeColor);
+    } else {
+        elseFor(buttonStyles, inactiveColor, button);
+        // button.style.color = inactiveColor;
+        // button.style.opacity = "0.5";
+        
+        // console.log(inactiveColor);
+    }
+    // console.log(activeColor);
+}
+
+function buttonsForEach(buttonStyles, activeColor, inactiveColor, buttons) {
+    buttons.forEach(button => {
+        separatingActiveButtonAndInactive(buttonStyles, activeColor, inactiveColor, button);
+    });
+}
+
 function updateButtonStates(clickedButton, buttonStyles, activeColor, inactiveColor, buttons) {
     activeButton = clickedButton;
-    buttons.forEach(button => {
-        if (button === activeButton) {
-            // button.style.color = activeColor;
-            // button.style.opacity = "1";
-            for (let i = 0; i < buttonStyles.length; i++) {
-                button.style[buttonStyles[i]] = activeColor[i];
-                // console.log(activeColor[i]);
-            }
-            // console.log(activeColor);
-        } else {
-            // button.style.color = inactiveColor;
-            // button.style.opacity = "0.5";
-            for (let k = 0; k < buttonStyles.length; k++) {
-                button.style[buttonStyles[k]] = inactiveColor[k];
-                // console.log(inactiveColor[i]);
-            }
-            // console.log(inactiveColor);
-        }
-        // console.log(activeColor);
-    });
+    buttonsForEach(buttonStyles, activeColor, inactiveColor, buttons);
+    
     // console.log(activeColor);
 }
 
