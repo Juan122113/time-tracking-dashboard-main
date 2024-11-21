@@ -33,16 +33,24 @@ let activeButton = null;
 // console.log(svg);
 console.log(currDivs);
 
+function buttonStylesInactive(buttonStyles, inactiveColor, button, k) {
+    button.style[buttonStyles[k]] = inactiveColor[k];
+}
+
+function buttonStylesActive(buttonStyles, activeColor, button, i) {
+    button.style[buttonStyles[i]] = activeColor[i];
+}
+
 function elseFor(buttonStyles, inactiveColor, button) {
     for (let k = 0; k < buttonStyles.length; k++) {
-        button.style[buttonStyles[k]] = inactiveColor[k];
+        buttonStylesInactive(buttonStyles, inactiveColor, button, k);
         // console.log(inactiveColor[i]);
     }
 }
 
 function ifFor(buttonStyles, activeColor, button) {
     for (let i = 0; i < buttonStyles.length; i++) {
-        button.style[buttonStyles[i]] = activeColor[i];
+        buttonStylesActive(buttonStyles, activeColor, button, i);
     }
 }
 
