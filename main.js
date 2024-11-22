@@ -28,6 +28,7 @@ const mouseStates = ['mouseenter', 'mouseleave'];
 
 let times = [];
 let activeButton = null;
+let inactiveButtons = [];
 
 // console.log(section);
 // console.log(svg);
@@ -54,7 +55,7 @@ function ifFor(buttonStyles, activeColor, button) {
     }
 }
 
-function separatingActiveButtonAndInactive(buttonStyles, activeColor, inactiveColor, button) {
+function separatingActiveButtonAndInactive(buttonStyles, activeColor, inactiveColor, button, activeButton) {
     if (button === activeButton) {
         ifFor(buttonStyles, activeColor, button);
         // button.style.color = activeColor;
@@ -72,15 +73,15 @@ function separatingActiveButtonAndInactive(buttonStyles, activeColor, inactiveCo
     // console.log(activeColor);
 }
 
-function buttonsForEach(buttonStyles, activeColor, inactiveColor, buttons) {
+function buttonsForEach(buttonStyles, activeColor, inactiveColor, buttons, activeButton) {
     buttons.forEach(button => {
-        separatingActiveButtonAndInactive(buttonStyles, activeColor, inactiveColor, button);
+        separatingActiveButtonAndInactive(buttonStyles, activeColor, inactiveColor, button, activeButton);
     });
 }
 
-function updateButtonStates(clickedButton, buttonStyles, activeColor, inactiveColor, buttons) {
+function updateButtonStates(clickedButton, buttonStyles, activeColor, inactiveColor, buttons, activeButton) {
     activeButton = clickedButton;
-    buttonsForEach(buttonStyles, activeColor, inactiveColor, buttons);
+    buttonsForEach(buttonStyles, activeColor, inactiveColor, buttons, activeButton);
     
     // console.log(activeColor);
 }
@@ -150,7 +151,7 @@ function handleButtonHover(button, mouseState, validations) {
 
 function handleButtonClick(button, timeframe) {
     return function(e) {
-        updateButtonStates(button, buttonStyles, activeColor, inactiveColor, buttons);
+        updateButtonStates(button, buttonStyles, activeColor, inactiveColor, buttons, activeButton);
         updateContent(timeframe, times);
     }
 }
@@ -339,7 +340,7 @@ fetch('./data.json')
     .then(response => response.json())
     .then(data => {
         times = data;
-        updateButtonStates(weekBtn, buttonStyles, activeColor, inactiveColor, buttons);
+        updateButtonStates(weekBtn, buttonStyles, activeColor, inactiveColor, buttons, activeButton);
         updateContent("weekly", times, currDivs);
     })
     .catch(error => console.error('Error:', error));
