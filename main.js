@@ -32,7 +32,7 @@ let inactiveButtons = [];
 
 // console.log(section);
 // console.log(svg);
-console.log(currDivs);
+console.log("currDivs:", currDivs);
 
 function buttonStylesInactive(buttonStyles, inactiveColor, button, k) {
     button.style[buttonStyles[k]] = inactiveColor[k];
@@ -341,6 +341,6 @@ fetch('./data.json')
     .then(data => {
         times = data;
         updateButtonStates(weekBtn, buttonStyles, activeColor, inactiveColor, buttons, activeButton);
-        updateContent("weekly", times, currDivs);
+        updateContent("weekly", times);
     })
     .catch(error => console.error('Error:', error));
