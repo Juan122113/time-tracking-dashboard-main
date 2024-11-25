@@ -28,7 +28,7 @@ const mouseStates = ['mouseenter', 'mouseleave'];
 
 let times = [];
 let activeButton = null;
-let inactiveButtons = [];
+// let inactiveButtons = [];
 
 // console.log(section);
 // console.log(svg);
@@ -55,7 +55,7 @@ function ifFor(buttonStyles, activeColor, button) {
     }
 }
 
-function separatingActiveButtonAndInactive(buttonStyles, activeColor, inactiveColor, button, activeButton) {
+function separatingActiveButtonAndInactive(buttonStyles, activeColor, inactiveColor, button) {
     if (button === activeButton) {
         ifFor(buttonStyles, activeColor, button);
         // button.style.color = activeColor;
@@ -73,15 +73,15 @@ function separatingActiveButtonAndInactive(buttonStyles, activeColor, inactiveCo
     // console.log(activeColor);
 }
 
-function buttonsForEach(buttonStyles, activeColor, inactiveColor, buttons, activeButton) {
+function buttonsForEach(buttonStyles, activeColor, inactiveColor, buttons) {
     buttons.forEach(button => {
-        separatingActiveButtonAndInactive(buttonStyles, activeColor, inactiveColor, button, activeButton);
+        separatingActiveButtonAndInactive(buttonStyles, activeColor, inactiveColor, button);
     });
 }
 
-function updateButtonStates(clickedButton, buttonStyles, activeColor, inactiveColor, buttons, activeButton) {
+function updateButtonStates(clickedButton, buttonStyles, activeColor, inactiveColor, buttons) {
     activeButton = clickedButton;
-    buttonsForEach(buttonStyles, activeColor, inactiveColor, buttons, activeButton);
+    buttonsForEach(buttonStyles, activeColor, inactiveColor, buttons);
     
     // console.log(activeColor);
 }
@@ -151,7 +151,7 @@ function handleButtonHover(button, mouseState, validations) {
 
 function handleButtonClick(button, timeframe) {
     return function(e) {
-        updateButtonStates(button, buttonStyles, activeColor, inactiveColor, buttons, activeButton);
+        updateButtonStates(button, buttonStyles, activeColor, inactiveColor, buttons);
         updateContent(timeframe, times);
     }
 }
@@ -291,22 +291,22 @@ console.log(section);
 //     assigningStyleElementoAlEntrar(section, j)};
 // }
 
-function assigningStyleElementoAlEntrar(elemento) {
-    elemento.style.backgroundColor = "hsl(235, 46%, 20%)";
+function assigningStyleElementoAlEntrar(eleme) {
+    eleme.style.backgroundColor = "hsl(235, 46%, 20%)";
 }
 
 function alEntrar() {
-    section.forEach(elemento => {
-        assigningStyleElementoAlEntrar(elemento);});
+    section.forEach(eleme => {
+        assigningStyleElementoAlEntrar(eleme);});
 }
 
-function assigningStyleElementoAlSalir(elemento) {
-    elemento.style.backgroundColor = "";
+function assigningStyleElementoAlSalir(eleme) {
+    eleme.style.backgroundColor = "";
 }
 
 function alSalir() {
-    section.forEach(elemento => {
-        assigningStyleElementoAlSalir(elemento);});
+    section.forEach(eleme => {
+        assigningStyleElementoAlSalir(eleme);});
 }
 
 // function alEntrar(section) {
@@ -328,9 +328,9 @@ function alSalir() {
 //     assigningStyleElementoAlSalir(elemento)});
 // }
 
-svg.forEach(elemento => {
-    elemento.addEventListener('mouseenter', alEntrar);
-    elemento.addEventListener('mouseleave', alSalir);
+svg.forEach(eleme => {
+    eleme.addEventListener('mouseenter', alEntrar);
+    eleme.addEventListener('mouseleave', alSalir);
 });
 
 // console.log(activeButton);
@@ -340,7 +340,7 @@ fetch('./data.json')
     .then(response => response.json())
     .then(data => {
         times = data;
-        updateButtonStates(weekBtn, buttonStyles, activeColor, inactiveColor, buttons, activeButton);
+        updateButtonStates(weekBtn, buttonStyles, activeColor, inactiveColor, buttons);
         updateContent("weekly", times);
     })
     .catch(error => console.error('Error:', error));
