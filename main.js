@@ -88,25 +88,6 @@ function updateButtonStates(clickedButton, buttonStyles, activeColor, inactiveCo
 
 // console.log(activeColor);
 
-const validations = {
-    'mouseenter': (button) => {for (let i = 0; i < buttonStyles.length; i++) {
-        button.style[buttonStyles[i]] = activeColor[i];
-    }},
-    'mouseleave': (button) => {for (let i = 0; i < buttonStyles.length; i++) {
-        button.style[buttonStyles[i]] = inactiveColor[i];
-    }}
-};
-
-function handleButtonHover(button, mouseState, validations) {
-    return function() {
-        if (button !== activeButton) {
-            // button.style.color = activeColor;
-            // button.style.opacity = "1";
-            return validations[mouseState](button);
-        }
-    }
-}
-
 // function handleButtonHover(button, mouseState) {
 //     return function() {
 //         if (button !== activeButton) {
@@ -156,6 +137,29 @@ function handleButtonClick(button, timeframe) {
     }
 }
 
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', handleButtonClick(buttons[i], timeFrames[i]));
+}
+
+const validations = {
+    'mouseenter': (button) => {for (let i = 0; i < buttonStyles.length; i++) {
+        button.style[buttonStyles[i]] = activeColor[i];
+    }},
+    'mouseleave': (button) => {for (let i = 0; i < buttonStyles.length; i++) {
+        button.style[buttonStyles[i]] = inactiveColor[i];
+    }}
+};
+
+function handleButtonHover(button, mouseState, validations) {
+    return function() {
+        if (button !== activeButton) {
+            // button.style.color = activeColor;
+            // button.style.opacity = "1";
+            return validations[mouseState](button);
+        }
+    }
+}
+
 mouseStates.forEach(mouseState => {
     buttons.forEach(button => {
         button.addEventListener(mouseState, handleButtonHover(button, mouseState, validations));
@@ -195,10 +199,6 @@ mouseStates.forEach(mouseState => {
 // })
 
 // let i = 0;
-
-for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', handleButtonClick(buttons[i], timeFrames[i]));
-}
 
 function assigningPastDivSetAtt(pastDiv) {
     pastDiv.setAttribute("class", "prev");
