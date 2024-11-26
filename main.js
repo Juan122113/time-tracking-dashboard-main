@@ -216,25 +216,38 @@ function assigningCurrDivInnerHTML(timeframe, activity, currDiv, pastDiv, curren
             
 }
 
-function assigningPreviousVar(timeframe, activity, currDiv, pastDiv, current) {
-    const previous = activity.timeframes[timeframe].previous;
+function assigningCurrentAndPreviousVar(timeframe, activity, currDiv, pastDiv){
+    const {current, previous} = activity.timeframes[timeframe];
     assigningCurrDivInnerHTML(timeframe, activity, currDiv, pastDiv, current, previous);
 }
 
-function assigningCurrentVar(timeframe, activity, currDiv, pastDiv) {
-    const current = activity.timeframes[timeframe].current;
-    assigningPreviousVar(timeframe, activity, currDiv, pastDiv, current);
+// function assigningPreviousVar(timeframe, activity, currDiv, pastDiv, current) {
+//     const previous = activity.timeframes[timeframe].previous;
+//     assigningCurrDivInnerHTML(timeframe, activity, currDiv, pastDiv, current, previous);
+// }
+
+// function assigningCurrentVar(timeframe, activity, currDiv, pastDiv) {
+//     const current = activity.timeframes[timeframe].current;
+//     assigningPreviousVar(timeframe, activity, currDiv, pastDiv, current);
             
-}
+// }
 
 function assigningPastDiv(timeframe, activity, index, currDiv) {
     const pastDiv = pastDivs[index];
-    assigningCurrentVar(timeframe, activity, currDiv, pastDiv);
+    assigningCurrentAndPreviousVar(timeframe, activity, currDiv, pastDiv)
 
         // if (currDiv && pastDiv) {
             
         // }
 }
+// function assigningPastDiv(timeframe, activity, index, currDiv) {
+//     const pastDiv = pastDivs[index];
+//     assigningCurrentVar(timeframe, activity, currDiv, pastDiv);
+
+//         // if (currDiv && pastDiv) {
+            
+//         // }
+// }
 
 function assigningCurrDiv(timeframe, activity, index) {
     const currDiv = currDivs[index];
