@@ -149,7 +149,6 @@ function getPastLabel(timeframe) {
 }
 
 /// 3 dots hover
-
 function assigningStyleElementoAlEntrar(eleme) {
     eleme.style.backgroundColor = "hsl(235, 46%, 20%)";
 }
@@ -170,9 +169,8 @@ function alSalir() {
 
 svg.forEach(eleme => {
     for (let r = 0; r < mouseStates.length; r++) {
-        eleme.addEventListener(mouseStates[r], svgFuncNames[i]);
+        eleme.addEventListener(mouseStates[r], svgFuncNames[r]);
     }
-    // eleme.addEventListener('mouseleave', alSalir);
 });
 
 // Fetch data
