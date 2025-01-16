@@ -16,6 +16,8 @@ const pastDivSelfCare = document.getElementById("past-self-care");
 const svg = document.querySelectorAll("svg");
 const section = document.querySelectorAll("section");
 
+
+
 const buttons = [dayBtn, weekBtn, monthBtn];
 const currDivs = [currDivWork, currDivPlay, currDivStudy, currDivExercise, currDivSocial, currDivSelfCare];
 const pastDivs = [pastDivWork, pastDivPlay, pastDivStudy, pastDivExercise, pastDivSocial, pastDivSelfCare];
