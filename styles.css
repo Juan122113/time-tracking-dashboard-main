@@ -82,12 +82,20 @@ header {
     opacity: 0.5;
 }
 
+.tf:hover {
+    cursor: pointer;
+}
+
 .container {
     margin: auto;
     width: 87%;
     padding-top: 2.1em;
     border-radius: 15px;
     margin-top: 1.45em;
+}
+
+.container:hover {
+    cursor: pointer;
 }
 
 .work {
@@ -136,6 +144,10 @@ section {
     align-items: center;
     justify-content: space-around;
     height: 6.8em;
+}
+
+section:hover {
+    background-color: hsl(238, 31%, 37%);
 }
 
 .current {
@@ -189,6 +201,10 @@ svg {
     bottom: 1em;
     left: 90%;
     color: var(--Pale-Blue);
+}
+
+svg:hover {
+    color: white;
 }
 
 .attribution { 
@@ -260,11 +276,6 @@ svg {
         cursor: pointer;
     }
 
-    .tf-hover {
-        color: white;
-        opacity: 1;
-    }
-
     #weekly {
         padding: 1.2em 0;
     }
@@ -276,17 +287,9 @@ svg {
         padding-top: 2.5em;
     }
 
-    .container:hover {
-        cursor: pointer;
-    }
-
     section {
         display: block;
         height: 100%;
-    }
-
-    section:hover {
-        background-color: hsl(238, 31%, 37%);
     }
 
     h5 {
@@ -310,9 +313,5 @@ svg {
     svg {
         bottom: 3.3em;
         left: 80%;
-    }
-
-    svg:hover {
-        color: white;
     }
 }
